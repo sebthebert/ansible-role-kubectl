@@ -1,0 +1,15 @@
+---
+- name: kubectl - Set download URL
+  set_fact:
+    kubectl_url_download: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_stable_release }}/bin/{{ ansible_system | lower }}/amd64/kubectl
+
+    #- name: kubectl - Creates directory
+    #  file:
+    #path: /url/local/bin
+    #state: directory
+
+- name: kubectl - Download
+  get_url:
+    url: "{{ kubectl_url_download }}"
+    dest: /local/kubectl
+    mode: "ugo+x"

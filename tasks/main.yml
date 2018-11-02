@@ -1,0 +1,7 @@
+---
+- include_tasks: get_stable_release.yml
+
+- debug:
+    msg: "{{ kubectl_stable_release }}"
+
+- include_tasks: download.yml

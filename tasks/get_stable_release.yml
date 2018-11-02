@@ -1,0 +1,10 @@
+---
+- name: kubectl - Get stable release
+  uri:
+    url: "{{ kubectl_url_stable_release }}"
+    return_content: yes
+  register: reg_stable_release
+
+- name: kubectl - Save stable release as {{ reg_stable_release.content | replace('\n', '') }}
+  set_fact:
+    kubectl_stable_release: "{{ reg_stable_release.content | replace('\n', '') }}"
